@@ -20,16 +20,16 @@ public class SettingsFragment extends PreferenceFragment {
         super.onCreate(savedInstanceState);
 
         addPreferencesFromResource(R.xml.settings_preferences);
-        FontPreference = (ListPreference)findPreference("Font_list");
-        FontSizePreference = (ListPreference)findPreference("Font_size_list");
+        FontPreference = (ListPreference) findPreference("Font_list");
+        FontSizePreference = (ListPreference) findPreference("Font_size_list");
 
         prefs = PreferenceManager.getDefaultSharedPreferences(getActivity());
 
-        if(!prefs.getString("Font_list", "").equals("")){
+        if (!prefs.getString("Font_list", "").equals("")) {
             FontPreference.setSummary(prefs.getString("Font_list", "바른고딕"));
         }
 
-        if(!prefs.getString("Font_size_list", "").equals("")){
+        if (!prefs.getString("Font_size_list", "").equals("")) {
             FontSizePreference.setSummary(prefs.getString("Font_size_list", "보통"));
         }
 
@@ -40,14 +40,13 @@ public class SettingsFragment extends PreferenceFragment {
     SharedPreferences.OnSharedPreferenceChangeListener prefListener = new SharedPreferences.OnSharedPreferenceChangeListener() {
         @Override
         public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
-            if(key.equals("Font_list")){
+            if (key.equals("Font_list")) {
                 FontPreference.setSummary(prefs.getString("Font_list", "바른고딕"));
             }
 
-            if(key.equals("Font_size_list")){
+            if (key.equals("Font_size_list")) {
                 FontSizePreference.setSummary(prefs.getString("Font_size_list", "보통"));
             }
         }
     };
-
 }
